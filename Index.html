@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CredShield Enterprise - Risk Desk Analytics</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8FAFC;
+        }
+    </style>
+</head>
+<body class="text-slate-900 antialiased flex min-h-screen">
+
+    <!-- 1. SIDEBAR NAVIGATION -->
+    <aside class="w-64 bg-slate-900 text-white flex flex-col justify-between p-5 shrink-0 hidden md:flex border-r border-slate-800">
+        <div>
+            <!-- Brand Logo -->
+            <div class="flex items-center gap-3 px-2 mb-8">
+                <div class="bg-emerald-500 p-2 rounded-lg text-slate-900">
+                    <i data-lucide="shield-check" class="h-6 w-6"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg tracking-tight leading-none">CredShield</h1>
+                    <span class="text-[10px] text-slate-400 font-medium uppercase tracking-widest">Enterprise</span>
+                </div>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="space-y-1">
+                <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-emerald-600 font-medium text-white text-sm transition-colors">
+                    <i data-lucide="layout-dashboard" class="h-4 w-4"></i> Dashboard
+                </a>
+                <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-white font-medium text-sm transition-colors">
+                    <i data-lucide="users" class="h-4 w-4"></i> Customers
+                </a>
+                <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-white font-medium text-sm transition-colors">
+                    <i data-lucide="file-text" class="h-4 w-4"></i> Loans
+                </a>
+                <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-white font-medium text-sm transition-colors">
+                    <i data-lucide="cpu" class="h-4 w-4"></i> Predictions
+                </a>
+                <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-white font-medium text-sm transition-colors">
+                    <i data-lucide="bell" class="h-4 w-4"></i> Alerts <span class="ml-auto w-2 h-2 rounded-full bg-red-500"></span>
+                </a>
+                <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-white font-medium text-sm transition-colors">
+                    <i data-lucide="bar-chart-3" class="h-4 w-4"></i> Analytics
+                </a>
+                <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-white font-medium text-sm transition-colors">
+                    <i data-lucide="download" class="h-4 w-4"></i> Reports
+                </a>
+            </nav>
+        </div>
+
+        <!-- Sidebar Footer Options -->
+        <div class="space-y-1 border-t border-slate-800 pt-4">
+            <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-white font-medium text-sm transition-colors">
+                <i data-lucide="settings" class="h-4 w-4"></i> Settings
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-white font-medium text-sm transition-colors">
+                <i data-lucide="user" class="h-4 w-4"></i> Profile
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-lg text-red-400 hover:bg-red-950/30 font-medium text-sm transition-colors">
+                <i data-lucide="log-out" class="h-4 w-4"></i> Logout
+            </a>
+        </div>
+    </aside>
+
+    <!-- 2. MAIN WORKSPACE CONTAINER -->
+    <main class="flex-1 flex flex-col min-w-0">
+        
+        <!-- Top Application Bar -->
+        <header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-8 z-10">
+            <div class="w-96 relative">
+                <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400"></i>
+                <input type="text" placeholder="Search for customers, loans, or alerts..." class="w-full pl-9 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-xs font-medium focus:outline-none focus:border-emerald-500 transition-colors">
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <button class="p-2 text-slate-500 hover:bg-slate-50 rounded-lg transition-colors relative">
+                    <i data-lucide="bell" class="h-5 w-5"></i>
+                    <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full"></span>
+                </button>
+                <div class="h-8 w-px bg-slate-200"></div>
+                <div class="flex items-center gap-3">
+                    <div class="h-9 w-9 bg-slate-100 rounded-full border border-slate-200 flex items-center justify-center font-bold text-xs text-slate-700">
+                        VA
+                    </div>
+                    <div class="hidden sm:block">
+                        <p class="text-xs font-semibold text-slate-900 leading-none">Vance A.</p>
+                        <span class="text-[10px] text-slate-400 font-medium">Risk Analyst</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Dashboard Viewport -->
+        <div class="flex-1 overflow-y-auto p-8">
+            
+            <!-- Dashboard View Header -->
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 pb-6 border-b border-slate-200 gap-4">
+                <div>
+                    <h2 class="text-2xl font-bold tracking-tight text-slate-900">Risk Desk Portfolio Analytics</h2>
+                    <p class="text-slate-500 text-xs mt-1">Underwriting Metrics | Data: Live</p>
+                </div>
+                <div class="flex gap-3">
+                    <button class="px-4 py-2 border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-medium rounded-lg text-xs transition-all shadow-sm">
+                        Export Core Ledger
+                    </button>
+                    <button class="px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-white font-medium rounded-lg text-xs transition-all shadow-sm">
+                        Run Batch Scoring
+                    </button>
+                </div>
+            </div>
+
+            <!-- KPI Cards Grid Matrix -->
+            <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <!-- KPI Card 1 -->
+                <div class="bg-white border border-slate-200 p-5 rounded-xl shadow-xs">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="text-[10px] font-bold tracking-wider text-slate-400 uppercase">Total Loans</span>
+                            <h3 class="text-2xl font-bold tracking-tight text-slate-900 mt-1">$412.8M</h3>
+                        </div>
+                        <div class="p-2 bg-slate-50 rounded-lg text-slate-500">
+                            <i data-lucide="dollar-sign" class="h-4 w-4"></i>
+                        </div>
+                    </div>
+                    <p class="text-[11px] font-medium text-emerald-500 mt-3 flex items-center gap-1">
+                        <i data-lucide="trending-up" class="h-3 w-3"></i> +14.2% MoM
+                    </p>
+                </div>
+                <!-- KPI Card 2 -->
+                <div class="bg-white border border-slate-200 p-5 rounded-xl shadow-xs">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="text-[10px] font-bold tracking-wider text-slate-400 uppercase">Active Loans</span>
+                            <h3 class="text-2xl font-bold tracking-tight text-slate-900 mt-1">5,892</h3>
+                        </div>
+                        <div class="p-2 bg-slate-50 rounded-lg text-slate-500">
+                            <i data-lucide="activity" class="h-4 w-4"></i>
+                        </div>
+                    </div>
+                    <p class="text-[11px] font-medium text-slate-400 mt-3">Active processing volume</p>
+                </div>
+                <!-- KPI Card 3 -->
+                <div class="bg-white border border-slate-200 p-5 rounded-xl shadow-xs">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="text-[10px] font-bold tracking-wider text-slate-400 uppercase">Default Risk</span>
+                            <h3 class="text-2xl font-bold tracking-tight text-slate-900 mt-1">3.24%</h3>
+                        </div>
+                        <div class="p-2 bg-slate-50 rounded-lg text-slate-500">
+                            <i data-lucide="percent" class="h-4 w-4"></i>
+                        </div>
+                    </div>
+                    <p class="text-[11px] font-medium text-red-500 mt-3 flex items-center gap-1">
+                        <i data-lucide="trending-up" class="h-3 w-3"></i> +0.1% Variance
+                    </p>
+                </div>
+                <!-- KPI Card 4 -->
+                <div class="bg-white border border-slate-200 p-5 rounded-xl shadow-xs border-l-4 border-l-red-500">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="text-[10px] font-bold tracking-wider text-slate-400 uppercase">Critical Alerts</span>
+                            <h3 class="text-2xl font-bold tracking-tight text-slate-900 mt-1">14</h3>
+                        </div>
+                        <div class="p-2 bg-red-50 rounded-lg text-red-500">
+                            <i data-lucide="triangle-alert" class="h-4 w-4"></i>
+                        </div>
+                    </div>
+                    <p class="text-[11px] font-bold text-red-600 mt-3">Action Required Immediately</p>
+                </div>
+            </section>
+
+            <!-- Interactive Underwriting Data Workspace Split Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+                <!-- Sandbox AI Real-Time Tester Console Form -->
+                <div class="bg-white border border-slate-200 rounded-xl p-6 shadow-xs lg:col-span-1">
+                    <h3 class="text-sm font-semibold text-slate-900 mb-1 flex items-center gap-2">
+                        <i data-lucide="cpu" class="h-4 w-4 text-emerald-500"></i> AI Risk Prediction Console
+                    </h3>
+                    <p class="text-xs text-slate-400 mb-4">Simulate metric variables instantly inside the localized neural interface model pipeline.</p>
+                    
+                    <form id="riskForm" class="space-y-3.5">
+                        <div>
+                            <label class="block text-[10px] font-bold uppercase text-slate-400 mb-1">Annual Income ($)</label>
+                            <input type="number" id="income" value="95000" class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2.5 text-xs font-medium focus:outline-none focus:border-emerald-500 transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold uppercase text-slate-400 mb-1">Loan Amount Request ($)</label>
+                            <input type="number" id="loanAmount" value="300000" class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2.5 text-xs font-medium focus:outline-none focus:border-emerald-500 transition-colors">
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-[10px] font-bold uppercase text-slate-400 mb-1">Bureau FICO Score</label>
+                                <input type="number" id="creditScore" value="640" class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2.5 text-xs font-medium focus:outline-none focus:border-emerald-500 transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-bold uppercase text-slate-400 mb-1">Delinquent EMIs</label>
+                                <input type="number" id="delinquencies" value="2" class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2.5 text-xs font-medium focus:outline-none focus:border-emerald-500 transition-colors">
+                            </div>
+                        </div>
+                        <button type="submit" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-medium p-2.5 rounded-lg text-xs transition-colors flex justify-center items-center gap-2 shadow-xs cursor-pointer">
+                            Execute Diagnostic Evaluation <i data-lucide="arrow-right" class="h-3 w-3"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Dynamic Reactive Metric Output Screen -->
+                <div class="bg-white border border-slate-200 rounded-xl p-6 shadow-xs lg:col-span-2 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-sm font-semibold text-slate-900 mb-1 flex items-center gap-2">
+                            <i data-lucide="shield-alert" class="h-4 w-4 text-emerald-500"></i> Model Diagnostic Verdict Analysis
+                        </h3>
+                        <p class="text-xs text-slate-400 mb-4">Ensemble processing weights visualization derived from mathematical parameters.</p>
+                    </div>
+
+                    <!-- Evaluation State Container Wrapper -->
+                    <div id="resultsWrapper" class="flex-1 flex flex-col justify-center">
+                        <div class="text-center text-slate-400 py-8">
+                            <i data-lucide="scan-eye" class="h-10 w-10 mx-auto stroke-1 text-slate-300 mb-2"></i>
+                            <p class="text-xs font-medium">Awaiting Pipeline Trigger Input Parameters</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Queue Alerts Data Table Ledger Layout -->
+            <div class="bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden">
+                <div class="p-5 border-b border-slate-200">
+                    <h3 class="text-sm font-semibold text-slate-900">High Priority Early Warning Queue</h3>
+                    <p class="text-xs text-slate-400 mt-0.5">Automated systemic warning alerts triggered by active portfolio threshold limits.</p>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-slate-50 border-b border-slate-200 text-[10px] uppercase font-bold text-slate-400 tracking-wider">
+                                <th class="p-4">Alert Token</th>
+                                <th class="p-4">Borrower Counterparty</th>
+                                <th class="p-4">Risk Variance Metric</th>
+                                <th class="p-4">Severity Status</th>
+                                <th class="p-4 text-right">Action Desk</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-xs text-slate-700 divide-y divide-slate-100">
+                            <tr class="hover:bg-slate-50/70 transition-colors">
+                                <td class="p-4 font-mono font-bold text-slate-900">AL-902</td>
+                                <td class="p-4 font-medium text-slate-900">Avery Vance</td>
+                                <td class="p-4 text-slate-500">Credit Card Revolving Utilization Spike (>88%)</td>
+                                <td class="p-4"><span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-red-50 text-red-600">CRITICAL</span></td>
+                                <td class="p-4 text-right"><a href="#" class="text-emerald-600 hover:underline font-semibold">Intercept</a></td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/70 transition-colors">
+                                <td class="p-4 font-mono font-bold text-slate-900">AL-903</td>
+                                <td class="p-4 font-medium text-slate-900">Marcus Vance</td>
+                                <td class="p-4 text-slate-500">Core Corporate Payroll Deposit Missing (14 Days)</td>
+                                <td class="p-4"><span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-amber-50 text-amber-600">ELEVATED</span></td>
+                                <td class="p-4 text-right"><a href="#" class="text-emerald-600 hover:underline font-semibold">Intercept</a></td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/70 transition-colors">
+                                <td class="p-4 font-mono font-bold text-slate-900">AL-904</td>
+                                <td class="p-4 font-medium text-slate-900">Eleanor Vance</td>
+                                <td class="p-4 text-slate-500">Multi-Institutional Application Velocities Checked</td>
+                                <td class="p-4"><span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-yellow-50 text-yellow-600">STABLE_WARN</span></td>
+                                <td class="p-4 text-right"><a href="#" class="text-emerald-600 hover:underline font-semibold">Intercept</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- 3. REACTIVE CONTROLLER RUNTIME JAVASCRIPT -->
+    <script>
+        // Initialize Lucide Icons vector layout maps automatically on script parse loaded
+        lucide.createIcons();
+
+        // Target Form Evaluation Elements
+        const form = document.getElementById('riskForm');
+        const wrapper = document.getElementById('resultsWrapper');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Read Current Value Parameters from the Context Elements
+            const score = parseInt(document.getElementById('creditScore').value);
+            const del = parseInt(document.getElementById('delinquencies').value);
+
+            // Mock a structural model calculation formula response logic wrapper
+            let defaultProb = Math.min(Math.max(((800 - score) * 0.15) + (del * 12), 5), 98);
+            let riskTier = "LOW";
+            let colorThemeClass = "bg-emerald-50 text-emerald-600 border-emerald-200";
+            let actionText = "Automatic Systemic Verification Clear Approval Recommended";
+
+            if (defaultProb > 65) {
+                riskTier = "HIGH";
+                colorThemeClass = "bg-red-50 text-red-600 border-red-200";
+                actionText = "Immediate Structural Application Rejection Required";
+            } else if (defaultProb > 30) {
+                riskTier = "MEDIUM";
+       
